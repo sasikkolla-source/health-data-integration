@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Health Data Integration</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>Health Data Integration</h1>
+    <p class="subtitle">Unified view across wearables, manual entries, and lab results</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>1. Select / Sync Patient</h2>
+      <div class="row">
+        <input id="patientName" type="text" placeholder="Patient name, e.g. Jane Doe" />
+        <button onclick="syncPatient()">Sync All Sources</button>
+      </div>
+      <div class="row">
+        <select id="patientSelect" onchange="loadRecords()">
+          <option value="">-- choose an existing patient --</option>
+        </select>
+      </div>
+      <p id="syncStatus" class="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>2. Add Manual Entry</h2>
+      <div class="row">
+        <input id="weight" type="number" step="0.1" placeholder="Weight (kg)" />
+        <input id="systolic" type="number" placeholder="Systolic BP" />
+        <input id="diastolic" type="number" placeholder="Diastolic BP" />
+        <button onclick="submitManualEntry()">Add Entry</button>
+      </div>
+      <p id="manualStatus" class="status"></p>
+    </section>
+
+    <section class="panel">
+      <h2>3. Unified Health Record</h2>
+      <div id="summaryCards" class="summary-cards"></div>
+      <table id="recordsTable">
+        <thead>
+          <tr><th>Source</th><th>Metric</th><th>Value</th><th>Unit</th><th>Recorded At</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

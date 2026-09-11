@@ -1,0 +1,169 @@
+/* Health Data Integration — dashboard styling
+   Palette: chart-paper white, deep clinical teal, muted slate for structure,
+   amber only for live/attention states. Two type families: a humanist
+   sans for UI text, a slab/mono for numeric data (a clinical chart feel). */
+
+:root {
+  --paper: #FAFAF7;
+  --ink: #1E2A28;
+  --teal: #1F5F52;
+  --teal-dim: #E4EEEC;
+  --slate: #6B7A78;
+  --amber: #B8843A;
+  --line: #D9DFDD;
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+header {
+  padding: 2.25rem 2rem 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--teal);
+}
+
+.subtitle {
+  margin: 0.35rem 0 0;
+  color: var(--slate);
+  max-width: 42ch;
+}
+
+main {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 1.75rem 2rem 4rem;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.4rem;
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+
+.panel h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.row {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+input, select {
+  flex: 1;
+  min-width: 140px;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  font-family: inherit;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+input:focus, select:focus, button:focus {
+  outline: 2px solid var(--teal);
+  outline-offset: 1px;
+}
+
+button {
+  padding: 0.55rem 1.1rem;
+  border: none;
+  border-radius: var(--radius);
+  background: var(--teal);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover { background: #17473d; }
+
+.status {
+  min-height: 1.2em;
+  font-size: 0.85rem;
+  color: var(--teal);
+  margin: 0.4rem 0 0;
+}
+
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.metric-card {
+  border: 1px solid var(--line);
+  background: var(--teal-dim);
+  border-radius: var(--radius);
+  padding: 0.65rem 0.8rem;
+}
+
+.metric-card .label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--slate);
+  margin-bottom: 0.2rem;
+}
+
+.metric-card .value {
+  font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.86rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+}
+
+th {
+  color: var(--slate);
+  font-weight: 600;
+  font-size: 0.78rem;
+}
+
+td:nth-child(3), td:nth-child(4) {
+  font-family: "Consolas", "SFMono-Regular", Menlo, monospace;
+}
+
+tr.source-wearable td:first-child { color: var(--teal); }
+tr.source-lab td:first-child { color: var(--amber); }
+tr.source-manual td:first-child { color: var(--slate); }
+
+@media (max-width: 560px) {
+  main { padding: 1.25rem 1rem 3rem; }
+  header { padding: 1.5rem 1rem 1rem; }
+}
